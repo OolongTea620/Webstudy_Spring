@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context ="http://www.springframework.org/schema.context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
 	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
 		<property name="username" value="user02"></property>
 		<property name="password" value="user02"></property>
@@ -16,7 +19,7 @@
 		<property name="mapperLocations" value="classpath:database/mappers/*Mapper.xml"></property>
 		<property name="configLocation" value="classpath:database/config/conf.xml"></property>
 	</bean>
-	<!-- 미리 전송 과 결과 맵핑  -->
+	<!-- 미리 전송 과 결과 맵핑  --> 
 	<bean class="org.mybatis.spring.SqlSessionTemplate" id="sqlSession">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactoryBean"></constructor-arg>
 	</bean>
@@ -30,4 +33,6 @@
 		<!--전체 파일 최대 크기 제한 단위 : byte -->
 		<property name="maxUploadSize" value=" 104857600"></property>
 	</bean>
+	
+	
 </beans>
